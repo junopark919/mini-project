@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+  background-color: #3c3c3c;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3.2rem;
+
+  width: 37.5rem;
+  height: 66.7rem;
+  background-color: #0c0404;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgb(11, 4, 4, 0.3);
+  padding: 2.4rem;
+}
+
+.display {
+  font-size: 6.4rem;
+  font-family: 'Electrolize', sans-serif;
+  color: #fff;
+  text-align: right;
+}
+
+.display__input {
+  color: #999;
+  font-size: 3.2rem;
+  padding: 1.2rem 0;
+}
+
+.btns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.btns button {
+  border: none;
+  border-radius: 15px;
+  padding: 1.6rem;
+  font-size: 2.8rem;
+  cursor: pointer;
+  background-color: #848484;
+}
+
+.btns__sign {
+  background-color: #3d4444 !important;
+}
+
+.btns__operation {
+  background-color: #c23232 !important;
+}
