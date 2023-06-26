@@ -51,19 +51,19 @@ html {
   gap: 1.2rem;
 }
 
-.btns button {
-  border: none;
+.btn {
   border-radius: 15px;
   padding: 1.6rem;
   font-size: 2.8rem;
+  text-align: center;
   cursor: pointer;
   background-color: #848484;
 }
 
-.btns__sign {
+.btn__function {
   background-color: #3d4444 !important;
 }
 
-.btns__operation {
+.btn__arithmetic {
   background-color: #c23232 !important;
 }
