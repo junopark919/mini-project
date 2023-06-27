@@ -44,14 +44,20 @@ This is a basic calculator project that I created for practice using HTML, CSS, 
 
 ## Usage
 
+This repository, named 'mini-project,' serves as a collection of small projects that I have created for practice and learning purposes. Each project is contained within its own directory and can be explored independently. Here's how you can use this repository:
+
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/mini-project.git
+git clone https://github.com/junopark919/mini-project.git
 ```
 
-2. Open the index.html file in your web browser.
-3. Use the buttons on the calculator interface or the keyboard to perform calculations.
+2. Navigate to the specific project directory of interest.
+3. Follow the project-specific instructions provided in each project's directory.
+
+   - For example, if you want to explore the calculator project, navigate to the 'calculator' directory and follow the instructions mentioned in its respective README.
+
+Feel free to explore and utilize the projects in this repository for your learning and practice. Each project is designed to provide hands-on experience with different concepts and technologies.
 
 <br>
 

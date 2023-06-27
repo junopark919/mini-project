@@ -31,13 +31,20 @@ This project is a simple home page created as part of the 'HTML and CSS in Depth
 
 ## Installation
 
+This repository, named 'mini-project,' serves as a collection of small projects that I have created for practice and learning purposes. Each project is contained within its own directory and can be explored independently. Here's how you can use this repository:
+
 1. Clone the repository:
 
 ```bash
-  git clone https://github.com/your-username/mangata-gallo-jewelry.git
+git clone https://github.com/junopark919/mini-project.git
 ```
 
-2. Open the index.html file in your web browser.
+2. Navigate to the specific project directory of interest.
+3. Follow the project-specific instructions provided in each project's directory.
+
+   - For example, if you want to explore the calculator project, navigate to the 'calculator' directory and follow the instructions mentioned in its respective README.
+
+Feel free to explore and utilize the projects in this repository for your learning and practice. Each project is designed to provide hands-on experience with different concepts and technologies.
 
 <br>
 
@@ -49,5 +56,11 @@ Feel free to use this home page as a template for your own jewelry shop projects
 
 ## Credits
 
-- Meta Front-End Developer Professional Certificate course materials and guidance.
-- Images provided by the course resources (owned by their respective creators).
+- The course materials and guidance provided by [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer?).
+- Images used in the project were provided by the course resources and belong to their respective owners.
+
+<br>
+
+## License
+
+This repository is licensed under the MIT License.
