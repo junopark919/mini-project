@@ -36,9 +36,9 @@ This is a basic calculator project that I created for practice using HTML, CSS, 
 
 ## Technologies Used
 
-HTML5
-CSS3
-JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 <br>
 
