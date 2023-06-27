@@ -1,12 +1,21 @@
 const btnNumber = document.querySelectorAll('.btn__number');
-const btnArithmetic = document.querySelectorAll('.btn__arithmetic');
+const btnOperation = document.querySelectorAll('.btn__operation');
 const btnFunction = document.querySelectorAll('.btn__function');
 const display = document.querySelector('.display__answer');
 
 let answer = 0;
-let arithmetic = 0;
+let operation = 0;
 let equal = 0;
 
+const clickHandler = (element, handler) => {
+  for (let i = 0; i < element.length; i++) {
+    element[i].addEventListener('click', () => {
+      handler(element[i].role);
+    });
+  }
+};
+
+// NUMBER BUTTONS
 const numberHandler = (target) => {
   if (answer === 0 || equal === 0) {
     answer = target;
@@ -16,43 +25,34 @@ const numberHandler = (target) => {
     answer += target;
     display.innerHTML = answer;
   }
-  arithmetic = 1;
+  operation = 1;
 };
 
-// NUMBER BUTTONS
-for (let i = 0; i < btnNumber.length; i++) {
-  btnNumber[i].addEventListener('click', () => {
-    numberHandler(btnNumber[i].role);
-  });
-}
+clickHandler(btnNumber, numberHandler);
 
-// ARITHMETIC BUTTONS
-const arithmeticHandler = (target) => {
-  if (arithmetic === 1) {
-    if (target === '=') {
+// OPERATION BUTTONS
+const operationHandler = (target) => {
+  if (operation === 1) {
+    if (target === '=' || target === 'Enter') {
       answer = eval(answer);
       display.innerHTML = answer;
-      arithmetic = 1;
+      operation = 1;
       equal = 0;
     } else {
       answer += target;
       display.innerHTML = answer;
-      arithmetic = 0;
+      operation = 0;
       equal = 1;
     }
   }
 };
 
-for (let i = 0; i < btnArithmetic.length; i++) {
-  btnArithmetic[i].addEventListener('click', () => {
-    arithmeticHandler(btnArithmetic[i].role);
-  });
-}
+clickHandler(btnOperation, operationHandler);
 
 // FUNCTION BUTTONS
 const functionHandler = (target) => {
   switch (target) {
-    case 'c':
+    case 'Escape':
       answer = 0;
       display.innerHTML = answer;
       break;
@@ -67,11 +67,7 @@ const functionHandler = (target) => {
   }
 };
 
-for (let i = 0; i < btnFunction.length; i++) {
-  btnFunction[i].addEventListener('click', () => {
-    functionHandler(btnFunction[i].role);
-  });
-}
+clickHandler(btnFunction, functionHandler);
 
 // KEYBOARD
 window.addEventListener('keydown', (event) => {
@@ -82,13 +78,13 @@ window.addEventListener('keydown', (event) => {
     event.key === '-' ||
     event.key === '*' ||
     event.key === '/' ||
-    event.key === '='
+    event.key === 'Enter'
   ) {
-    arithmeticHandler(event.key);
+    operationHandler(event.key);
   } else if (
     event.key === 'Backspace' ||
     event.key === '%' ||
-    event.key === 'c'
+    event.key === 'Escape'
   ) {
     functionHandler(event.key);
   }
