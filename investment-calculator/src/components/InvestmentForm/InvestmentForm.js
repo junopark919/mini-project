@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './InvestmentForm.css';
+import styles from './InvestmentForm.module.css';
 
 const InvestmentForm = (props) => {
   const [userInput, setUserInput] = useState({
@@ -61,57 +61,63 @@ const InvestmentForm = (props) => {
       enteredExpectedInterest: '',
       enteredDuration: '',
     });
+
+    props.onReset(false);
   };
 
   return (
-    <form className="form" onSubmit={submitHandler}>
-      <div className="input-group">
+    <form className={styles['form']} onSubmit={submitHandler}>
+      <div className={styles['input-group']}>
         <p>
-          <label htmlFor="current-savings">Current Savings ($)</label>
+          <label htmlFor='current-savings'>Current Savings ($)</label>
           <input
-            type="number"
-            id="current-savings"
+            type='number'
+            id='current-savings'
             value={userInput['enteredCurrentSavings']}
             onChange={currentChangeHandler}
           />
         </p>
         <p>
-          <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
+          <label htmlFor='yearly-contribution'>Yearly Savings ($)</label>
           <input
-            type="number"
-            id="yearly-contribution"
+            type='number'
+            id='yearly-contribution'
             value={userInput['enteredYearlySavings']}
             onChange={yearlyChangeHandler}
           />
         </p>
       </div>
-      <div className="input-group">
+      <div className={styles['input-group']}>
         <p>
-          <label htmlFor="expected-return">
+          <label htmlFor='expected-return'>
             Expected Interest (%, per year)
           </label>
           <input
-            type="number"
-            id="expected-return"
+            type='number'
+            id='expected-return'
             value={userInput['enteredExpectedInterest']}
             onChange={interestChangeHandler}
           />
         </p>
         <p>
-          <label htmlFor="duration">Investment Duration (years)</label>
+          <label htmlFor='duration'>Investment Duration (years)</label>
           <input
-            type="number"
-            id="duration"
+            type='number'
+            id='duration'
             value={userInput['enteredDuration']}
             onChange={durationChangeHandler}
           />
         </p>
       </div>
-      <p className="actions">
-        <button type="reset" className="buttonAlt" onClick={resetHandler}>
+      <p className={styles['actions']}>
+        <button
+          type='reset'
+          className={styles['buttonAlt']}
+          onClick={resetHandler}
+        >
           Reset
         </button>
-        <button type="submit" className="button">
+        <button type='submit' className={styles['button']}>
           Calculate
         </button>
       </p>

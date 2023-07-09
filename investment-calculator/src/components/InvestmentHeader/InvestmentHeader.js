@@ -1,10 +1,10 @@
 import logo from '../../assets/investment-calculator-logo.png';
-import './InvestmentHeader.css';
+import styles from './InvestmentHeader.module.css';
 
 const Header = () => {
   return (
-    <header className="header">
-      <img src={logo} alt="logo" />
+    <header className={styles['header']}>
+      <img src={logo} alt='logo' />
       <h1>Investment Calculator</h1>
     </header>
   );

@@ -4,6 +4,8 @@ import InvestmentHeader from './components/InvestmentHeader/InvestmentHeader';
 import InvestmentForm from './components/InvestmentForm/InvestmentForm';
 import InvestmentResult from './components/InvestmentResult/InvestmentResult';
 
+import styles from './App.module.css';
+
 function App() {
   const [investmentData, setInvestmentData] = useState([]);
   const [isAvailable, setIsAvailable] = useState(false);
@@ -47,12 +49,13 @@ function App() {
     setInvestmentData(yearlyData);
   };
 
-  console.log(isAvailable);
-
   return (
     <div>
       <InvestmentHeader />
-      <InvestmentForm onCalculateHandler={calculateHandler} />
+      <InvestmentForm
+        onCalculateHandler={calculateHandler}
+        onReset={setIsAvailable}
+      />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
@@ -60,7 +63,7 @@ function App() {
       {isAvailable ? (
         <InvestmentResult items={investmentData} />
       ) : (
-        <p>No data is available.</p>
+        <p className={styles['fallback']}>No data is available.</p>
       )}
     </div>
   );

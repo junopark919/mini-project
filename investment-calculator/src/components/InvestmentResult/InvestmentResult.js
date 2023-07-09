@@ -1,10 +1,10 @@
 import InvestmentList from './InvestmentList';
 
-import './InvestmentResult.css';
+import styles from './InvestmentResult.module.css';
 
 const InvestmentResult = (props) => {
   return (
-    <table className="result">
+    <table className={styles['result']}>
       <thead>
         <tr>
           <th>Year</th>
