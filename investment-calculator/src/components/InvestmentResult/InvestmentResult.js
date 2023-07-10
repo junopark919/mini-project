@@ -1,6 +1,11 @@
-import InvestmentList from './InvestmentList';
-
 import styles from './InvestmentResult.module.css';
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
 const InvestmentResult = (props) => {
   return (
@@ -15,15 +20,24 @@ const InvestmentResult = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.items.map((data) => (
-          <InvestmentList
-            year={data.year}
-            totalSavings={data.totalSavings}
-            yearlyInterest={data.yearlyInterest}
-            totalInterest={data.totalInterest}
-            investedCapital={data.investedCapital}
-            key={Math.random()}
-          />
+        {props.data.map((yearData) => (
+          <tr key={yearData.year}>
+            <td>{yearData.year}</td>
+            <td>{formatter.format(yearData.totalSavings)}</td>
+            <td>{formatter.format(yearData.yearlyInterest)}</td>
+            <td>
+              {formatter.format(
+                yearData.totalSavings -
+                  props.initialInvestment -
+                  yearData.yearlySavings * yearData.year
+              )}
+            </td>
+            <td>
+              {formatter.format(
+                props.initialInvestment + yearData.yearlySavings * yearData.year
+              )}
+            </td>
+          </tr>
         ))}
       </tbody>
     </table>

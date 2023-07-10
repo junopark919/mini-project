@@ -3,34 +3,18 @@ import { useState } from 'react';
 import styles from './InvestmentForm.module.css';
 
 const InvestmentForm = (props) => {
-  const [userInput, setUserInput] = useState({
+  const initialUserInput = {
     enteredCurrentSavings: '',
     enteredYearlySavings: '',
     enteredExpectedInterest: '',
     enteredDuration: '',
-  });
-
-  const currentChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredCurrentSavings: event.target.value };
-    });
   };
 
-  const yearlyChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredYearlySavings: event.target.value };
-    });
-  };
+  const [userInput, setUserInput] = useState(initialUserInput);
 
-  const interestChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredExpectedInterest: event.target.value };
-    });
-  };
-
-  const durationChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredDuration: event.target.value };
+  const inputChangeHandler = (input, value) => {
+    setUserInput((prevInput) => {
+      return { ...prevInput, [input]: +value }; // '+' converts the string value to a number
     });
   };
 
@@ -44,23 +28,13 @@ const InvestmentForm = (props) => {
       duration: userInput['enteredDuration'],
     };
 
-    props.onCalculateHandler(investmentData);
+    props.onCalculate(investmentData);
 
-    setUserInput({
-      enteredCurrentSavings: '',
-      enteredYearlySavings: '',
-      enteredExpectedInterest: '',
-      enteredDuration: '',
-    });
+    setUserInput(initialUserInput);
   };
 
   const resetHandler = (event) => {
-    setUserInput({
-      enteredCurrentSavings: '',
-      enteredYearlySavings: '',
-      enteredExpectedInterest: '',
-      enteredDuration: '',
-    });
+    setUserInput(initialUserInput);
 
     props.onReset(false);
   };
@@ -69,55 +43,63 @@ const InvestmentForm = (props) => {
     <form className={styles['form']} onSubmit={submitHandler}>
       <div className={styles['input-group']}>
         <p>
-          <label htmlFor='current-savings'>Current Savings ($)</label>
+          <label htmlFor="current-savings">Current Savings ($)</label>
           <input
-            type='number'
-            id='current-savings'
+            type="number"
+            id="current-savings"
             value={userInput['enteredCurrentSavings']}
-            onChange={currentChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler('enteredCurrentSavings', event.target.value)
+            }
           />
         </p>
         <p>
-          <label htmlFor='yearly-contribution'>Yearly Savings ($)</label>
+          <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
           <input
-            type='number'
-            id='yearly-contribution'
+            type="number"
+            id="yearly-contribution"
             value={userInput['enteredYearlySavings']}
-            onChange={yearlyChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler('enteredYearlySavings', event.target.value)
+            }
           />
         </p>
       </div>
       <div className={styles['input-group']}>
         <p>
-          <label htmlFor='expected-return'>
+          <label htmlFor="expected-return">
             Expected Interest (%, per year)
           </label>
           <input
-            type='number'
-            id='expected-return'
+            type="number"
+            id="expected-return"
             value={userInput['enteredExpectedInterest']}
-            onChange={interestChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler('enteredExpectedInterest', event.target.value)
+            }
           />
         </p>
         <p>
-          <label htmlFor='duration'>Investment Duration (years)</label>
+          <label htmlFor="duration">Investment Duration (years)</label>
           <input
-            type='number'
-            id='duration'
+            type="number"
+            id="duration"
             value={userInput['enteredDuration']}
-            onChange={durationChangeHandler}
+            onChange={(event) =>
+              inputChangeHandler('enteredDuration', event.target.value)
+            }
           />
         </p>
       </div>
       <p className={styles['actions']}>
         <button
-          type='reset'
+          type="reset"
           className={styles['buttonAlt']}
           onClick={resetHandler}
         >
           Reset
         </button>
-        <button type='submit' className={styles['button']}>
+        <button type="submit" className={styles['button']}>
           Calculate
         </button>
       </p>

@@ -4,66 +4,52 @@ import InvestmentHeader from './components/InvestmentHeader/InvestmentHeader';
 import InvestmentForm from './components/InvestmentForm/InvestmentForm';
 import InvestmentResult from './components/InvestmentResult/InvestmentResult';
 
-import styles from './App.module.css';
-
 function App() {
-  const [investmentData, setInvestmentData] = useState([]);
-  const [isAvailable, setIsAvailable] = useState(false);
+  const [userInput, setUserInput] = useState(null);
 
   const calculateHandler = (userInput) => {
-    // Should be triggered when form is submitted
-    // You might not directly want to bind it to the submit event on the form though...
-    const yearlyData = []; // per-year results
+    setUserInput(userInput); // deriving user input data and then handling it is a better and explicit way
+  };
 
-    let currentSavings = +userInput['currentSavings']; // feel free to change the shape of this input object!
-    const yearlySavings = +userInput['yearlySavings']; // as mentioned: feel free to change the shape...
-    const expectedInterest = +userInput['expectedInterest'] / 100;
-    const duration = +userInput['duration'];
-    let totalInterest = 0;
+  const yearlyData = [];
 
-    for (const item in userInput) {
-      if (userInput[item] === '') {
-        return setIsAvailable(false);
-      } else if (+userInput[item] >= 0) {
-        setIsAvailable(true);
-      }
-    }
+  // only when user input data exists
+  if (userInput) {
+    let currentSavings = userInput['currentSavings'];
+    const yearlySavings = userInput['yearlySavings'];
+    const expectedInterest = userInput['expectedInterest'] / 100;
+    const duration = userInput['duration'];
 
-    // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
       const yearlyInterest = currentSavings * expectedInterest;
-      const investedCapital = +userInput['currentSavings'] + yearlySavings * i;
       currentSavings += yearlyInterest + yearlySavings;
-      totalInterest += yearlyInterest;
       yearlyData.push({
-        // feel free to change the shape of the data pushed to the array!
         year: i + 1,
-        totalSavings: currentSavings,
         yearlyInterest: yearlyInterest,
-        totalInterest: totalInterest,
-        investedCapital: investedCapital,
+        totalSavings: currentSavings,
+        yearlySavings: yearlySavings,
       });
     }
-
-    // do something with yearlyData ...
-    setInvestmentData(yearlyData);
-  };
+  }
 
   return (
     <div>
       <InvestmentHeader />
-      <InvestmentForm
-        onCalculateHandler={calculateHandler}
-        onReset={setIsAvailable}
-      />
-
-      {/* Todo: Show below table conditionally (only once result data is available) */}
-      {/* Show fallback text if no data is available */}
-
-      {isAvailable ? (
+      <InvestmentForm onCalculate={calculateHandler} />
+      {/* {isAvailable ? (
         <InvestmentResult items={investmentData} />
       ) : (
         <p className={styles['fallback']}>No data is available.</p>
+      )} */}
+      {!userInput && (
+        <p style={{ textAlign: 'center' }}>No investment calculated yet.</p>
+      )}{' '}
+      {/* && */}
+      {userInput && (
+        <InvestmentResult
+          data={yearlyData}
+          initialInvestment={userInput['currentSavings']}
+        />
       )}
     </div>
   );
