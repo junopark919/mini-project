@@ -4,14 +4,26 @@ import Button from '../UI/Button';
 import Styles from './ErrorModal.module.css';
 
 const ErrorModal = (props) => {
+  const errorHandler = () => {
+    props.onClose(false);
+  };
+
   return (
-    <Card className={Styles['error-modal']}>
-      <h2>Invalid input</h2>
-      <p>Please enter a valid age (> 0).</p>
-      <div className={Styles['okay']}>
-        <Button className={Styles['button']}>Okay</Button>
-      </div>
-    </Card>
+    <div className={Styles['error-background']}>
+      <Card className={Styles['error-modal']}>
+        <h2>Invalid input</h2>
+        <p>{props.message}</p>
+        <div className={Styles['okay']}>
+          <Button
+            type="button"
+            className={Styles['button']}
+            onClick={errorHandler}
+          >
+            Okay
+          </Button>
+        </div>
+      </Card>
+    </div>
   );
 };
 

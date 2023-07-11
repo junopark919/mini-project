@@ -2,11 +2,13 @@ import Card from '../UI/Card';
 
 import Styles from './UserList.module.css';
 
-const UserList = () => {
+const UserList = (props) => {
   return (
     <Card>
       <ul className={Styles['user-list']}>
-        <li>Max (31 years old)</li>
+        {props.users.map((user) => (
+          <li key={user.name}>{`${user.name} (${user.age} years old)`}</li>
+        ))}
       </ul>
     </Card>
   );

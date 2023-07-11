@@ -5,6 +5,7 @@ const Button = (props) => {
     <button
       className={`${Styles.button} + ${props.className}`}
       type={props.type}
+      onClick={props.onClick}
     >
       {props.children}
     </button>

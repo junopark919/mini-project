@@ -1,5 +1,12 @@
 .user-list {
   list-style: none;
+}
+
+.user-list li {
   padding: 1rem 0.8rem;
   border: 1px solid #888;
+}
+
+.user-list li:not(:last-child) {
+  margin-bottom: 1rem;
 }
