@@ -21,10 +21,9 @@ User List App Demo
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
-- React
+- HTML
+- CSS
+- JavaScript(with React)
 
 <br>
 

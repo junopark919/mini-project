@@ -6,10 +6,13 @@ Welcome to the Mini-Project repository! This repository serves as a collection o
 
 ## Projects
 
-Here are some of the projects included in this repository:
+Here are the projects included in this repository:
 
 - [Basic Calculator](https://github.com/junopark919/mini-project/tree/main/basic-calculator)
 - [Mangata and Gallo Jewerly Shop - Home Page](https://github.com/junopark919/mini-project/tree/main/mangata-and-gallo)
+- [Circular Progress Bar](https://github.com/junopark919/mini-project/tree/main/circular-progress-bar)
+- [Investment Calculator](https://github.com/junopark919/mini-project/tree/main/investment-calculator)
+- [User List](https://github.com/junopark919/mini-project/tree/main/user-list)
 
 Feel free to explore the projects that interest you the most. Each project is contained within its own directory and includes a dedicated README file with specific instructions and details.
 

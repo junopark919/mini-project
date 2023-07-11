@@ -4,9 +4,7 @@ This is a basic calculator project that I created for practice using HTML, CSS, 
 
 <br>
 
-## Demo
-
-<img src="./preview.png" width="50%" height="50%"></img>
+## Preview
 
 <br>
 
@@ -36,8 +34,8 @@ This is a basic calculator project that I created for practice using HTML, CSS, 
 
 ## Technologies Used
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 
 <br>
@@ -55,7 +53,7 @@ git clone https://github.com/junopark919/mini-project.git
 2. Navigate to the specific project directory of interest.
 3. Follow the project-specific instructions provided in each project's directory.
 
-   - For example, if you want to explore the calculator project, navigate to the 'calculator' directory and follow the instructions mentioned in its respective README.
+   - For example, if you want to explore the basic calculator project, navigate to the 'basic-calculator' directory and follow the instructions mentioned in its respective README.
 
 Feel free to explore and utilize the projects in this repository for your learning and practice. Each project is designed to provide hands-on experience with different concepts and technologies.
 

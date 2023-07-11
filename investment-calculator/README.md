@@ -1,12 +1,12 @@
 # Investment Calculator
 
-This project is an investment calculator created as a task from the "React - The Complete Guide" course by Maximilian Schwarzmüller. The initial project was provided by Maximilian Schwarzmüller as part of the course curriculum, and the task was to split the project into components, implement calculate and reset button click events, manage states, and apply styling with CSS modules according to the React concepts learned in the basic React course part.
+This project is an investment calculator created as a task from the ["React - The Complete Guide" course by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/). The initial project was provided by Maximilian Schwarzmüller as part of the course curriculum, and the task was to split the project into components, implement calculate and reset button click events, manage states, and apply styling with CSS modules according to the React concepts learned in the basic React course part.
 
-Please note that the initial project was provided for learning purposes within the course, and its usage beyond that may be subject to the original creator's terms and conditions.
+_Please note that the initial project was provided for learning purposes within the course, and its usage beyond that may be subject to the original creator's terms and conditions._
 
 <br>
 
-## Demo
+## Preview
 
 Investment Calculator Demo
 
@@ -23,8 +23,9 @@ Investment Calculator Demo
 
 ## Technologies Used
 
-- React
-- CSS Modules
+- HTML
+- CSS
+- JavaScript(with React)
 
 <br>
 
@@ -46,7 +47,7 @@ cd investment-calculator
 
 3. Follow the project-specific instructions provided in each project's directory.
 
-   - For example, if you want to explore the calculator project, navigate to the 'investment-calculator' directory and follow the instructions mentioned in its respective README.
+   - For example, if you want to explore the investment calculator project, navigate to the 'investment-calculator' directory and follow the instructions mentioned in its respective README.
 
 <br>
 
@@ -76,7 +77,7 @@ Feel free to customize the investment calculator project to fit your needs. You 
 
 ## Credits
 
-The "React - The Complete Guide" course by Maximilian Schwarzmüller for providing the initial project and guiding the learning process.
+The ["React - The Complete Guide" course by Maximilian Schwarzmüller](https://www.udemy.com/course/react-the-complete-guide-incl-redux/) for providing the initial project and guiding the learning process.
 
 <br>
 

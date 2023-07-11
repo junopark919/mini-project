@@ -1,12 +1,10 @@
 # Mangata and Gallo Jewelry Shop - Home Page
 
-This project is a simple home page created as part of the 'HTML and CSS in Depth' course for the Meta Front-End Developer Professional Certificate. The goal of the assignment was to design a home page for an imaginary client, 'Mangata and Gallo,' a jewelry shop. The page incorporates offered images in semantic structures using CSS Grid or Flexbox and includes a promotional banner.
+This project is a simple home page created as part of the ['HTML and CSS in Depth' course](https://www.coursera.org/learn/html-and-css-in-depth) for [the Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer?). The goal of the assignment was to design a home page for an imaginary client, 'Mangata and Gallo,' a jewelry shop. The page incorporates offered images in semantic structures using CSS Grid or Flexbox and includes a promotional banner.
 
 <br>
 
 ## Demo
-
-<p align='center'><img src='./img/preview.png' width='70%' height='70%' /></p>
 
 <br>
 
@@ -22,10 +20,8 @@ This project is a simple home page created as part of the 'HTML and CSS in Depth
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- CSS Grid
-- Flexbox
+- HTML
+- CSS
 
 <br>
 
@@ -42,7 +38,7 @@ git clone https://github.com/junopark919/mini-project.git
 2. Navigate to the specific project directory of interest.
 3. Follow the project-specific instructions provided in each project's directory.
 
-   - For example, if you want to explore the calculator project, navigate to the 'calculator' directory and follow the instructions mentioned in its respective README.
+   - For example, if you want to explore the Mangata and Gallo project, navigate to the 'mangata-and-gallo' directory and follow the instructions mentioned in its respective README.
 
 Feel free to explore and utilize the projects in this repository for your learning and practice. Each project is designed to provide hands-on experience with different concepts and technologies.
 
