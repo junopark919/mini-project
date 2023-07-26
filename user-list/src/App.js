@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import AddUser from './components/User/AddUser';
 import UserList from './components/User/UserList';
@@ -6,17 +6,19 @@ import UserList from './components/User/UserList';
 function App() {
   const [userData, setUserData] = useState('');
 
-  const dataHandler = (userInput) => {
+  const dataHandler = (userName, userAge) => {
     setUserData((prevInput) => {
-      return [...prevInput, userInput];
+      return [...prevInput, { name: userName, age: userAge }];
     });
+
+    console.log(userData);
   };
 
   return (
-    <div>
+    <Fragment>
       <AddUser onAddData={dataHandler} />
       {userData && <UserList users={userData} />}
-    </div>
+    </Fragment>
   );
 }
 
