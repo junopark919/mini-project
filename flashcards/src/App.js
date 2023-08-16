@@ -38,35 +38,62 @@ const questions = [
 export default function App() {
   return (
     <div className="App">
-      <Flashcards />
+      <FlashCards />
     </div>
   );
 }
 
-function Flashcards() {
+// function FlashCards() {
+//   return (
+//     <div className="flashcards">
+//       {questions.map((question) => (
+//         <Card
+//           key={question.id}
+//           question={question.question}
+//           answer={question.answer}
+//         />
+//       ))}
+//     </div>
+//   );
+// }
+
+// function Card({ question, answer }) {
+//   const [select, setSelect] = useState(false);
+
+//   function clickHandler() {
+//     setSelect((s) => (!s ? true : false));
+//   }
+
+//   return (
+//     <div onClick={clickHandler} className={select ? 'selected' : ''}>
+//       <p>{!select ? question : answer}</p>
+//     </div>
+//   );
+// }
+
+function FlashCards() {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
+
   return (
     <div className="flashcards">
       {questions.map((question) => (
-        <Card
-          key={question.id}
-          question={question.question}
-          answer={question.answer}
-        />
+        <div
+          key={questions.id}
+          onClick={() => handleClick(question.id)}
+          className={question.id === selectedId ? 'selected' : ''}
+        >
+          <p>
+            {question.id === selectedId ? question.answer : question.question}
+          </p>
+        </div>
       ))}
     </div>
   );
 }
 
-function Card({ question, answer }) {
-  const [select, setSelect] = useState(false);
-
-  function clickHandler() {
-    setSelect((s) => (!s ? true : false));
-  }
-
-  return (
-    <div onClick={clickHandler} className={select ? 'selected' : ''}>
-      {!select ? question : answer}
-    </div>
-  );
-}
+// onClick={() => handleClick(question.id)}
+// to call the function only when this event happens
