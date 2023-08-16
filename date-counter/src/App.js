@@ -13,12 +13,15 @@ function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
 
-  function subtractStepHandler() {
-    setStep((prevStep) => prevStep - 1);
-  }
+  // function subtractStepHandler() {
+  //   setStep((prevStep) => prevStep - 1);
+  // }
 
-  function addStepHandler() {
-    setStep((prevStep) => prevStep + 1);
+  // function addStepHandler() {
+  //   setStep((prevStep) => prevStep + 1);
+  // }
+  function stepHandler(e) {
+    setStep((s) => (e.target.value > s ? s + 1 : s - 1));
   }
 
   function subtractCountHandler() {
@@ -35,13 +38,18 @@ function Counter() {
   return (
     <>
       <div>
-        <button onClick={subtractStepHandler}>-</button>
+        <input
+          type="range"
+          value={step}
+          min="0"
+          max="10"
+          onChange={(e) => stepHandler(e)}
+        />
         <span>Step: {step}</span>
-        <button onClick={addStepHandler}>+</button>
       </div>
       <div>
         <button onClick={subtractCountHandler}>-</button>
-        <span>Count: {count}</span>
+        <input type="text" value={count} />
         <button onClick={addCountHandler}>+</button>
       </div>
       <p>
