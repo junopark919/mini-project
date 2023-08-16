@@ -21,15 +21,21 @@ function Counter() {
   //   setStep((prevStep) => prevStep + 1);
   // }
   function stepHandler(e) {
-    setStep((s) => (e.target.value > s ? s + 1 : s - 1));
+    // setStep((s) => (e.target.value > s ? s + 1 : s - 1));
+    setStep(Number(e.target.value));
   }
 
   function subtractCountHandler() {
-    setCount((prevCount) => prevCount - step);
+    setCount((prev) => prev - step);
   }
 
   function addCountHandler() {
-    setCount((prevCount) => prevCount + step);
+    setCount((prev) => prev + step);
+  }
+
+  function resetHandler(e) {
+    setStep(1);
+    setCount(0);
   }
 
   const date = new Date();
@@ -49,7 +55,11 @@ function Counter() {
       </div>
       <div>
         <button onClick={subtractCountHandler}>-</button>
-        <input type="text" value={count} />
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button onClick={addCountHandler}>+</button>
       </div>
       <p>
@@ -62,6 +72,11 @@ function Counter() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={(e) => resetHandler(e)}>Reset</button>
+        </div>
+      ) : null}
     </>
   );
 }
