@@ -7,11 +7,17 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItems={handleAddItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
@@ -26,7 +32,7 @@ function Logo() {
 // 2. use the state on the element that we want to control
 // 3. force the element to always take the value of this state variable
 // 4. update that state variable
-function Form() {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
@@ -37,6 +43,8 @@ function Form() {
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
+
+    onAddItems(newItem);
 
     setDescription('');
     setQuantity(1);
@@ -72,11 +80,11 @@ function Form() {
   );
 }
 
-function PackingList() {
+function PackingList({ items }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
