@@ -44,7 +44,7 @@ function TextExpander({
   collapseButtonText = 'Show less',
   expanded = false,
 }) {
-  const [expand, setExpand] = useState(expanded);
+  const [isExpanded, setIsExpanded] = useState(expanded);
 
   const textStyle = {
     // maxLength: 10,
@@ -53,21 +53,26 @@ function TextExpander({
 
   const buttonStyle = {
     borderStyle: 'none',
-    backgroundColor: 'transparent',
-    fontSize: '16px',
+    background: 'none',
+    font: 'inherit',
     color: buttonColor,
     cursor: 'pointer',
+    marginLeft: '4px',
   };
 
   function expandHandler() {
-    setExpand(!expand);
+    setIsExpanded(!isExpanded);
   }
+
+  const displayText = isExpanded
+    ? children
+    : children.split(' ').slice(0, collapsedNumWords).join(' ') + '...';
 
   return (
     <div style={textStyle} className={className}>
-      {children}
+      <span>{displayText}</span>
       <button style={buttonStyle} onClick={expandHandler}>
-        {!expand ? expandButtonText : collapseButtonText}
+        {isExpanded ? collapseButtonText : expandButtonText}
       </button>
     </div>
   );
