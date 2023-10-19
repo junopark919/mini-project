@@ -1,80 +1,61 @@
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [amount, setAmount] = useState(1);
+  const [fromCurrency, setFromCurrency] = useState('EUR');
   const [toCurrency, setToCurrency] = useState('USD');
-  const [currency, setCurrency] = useState({});
-  const [query, setQuery] = useState('');
-  const [output, setOutput] = useState('');
+  const [converted, setConverted] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
     function () {
-      async function fetchCurrency() {
-        if (fromCurrency !== toCurrency) {
-          const res = await fetch(
-            `https://api.frankfurter.app/latest?amount=100&from=${fromCurrency}&to=${toCurrency}`
-          );
-          const data = await res.json();
-
-          setCurrency(data);
-        } else {
-          setOutput(query);
-        }
+      async function convert() {
+        setIsLoading(true);
+        const res = await fetch(
+          `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`
+        );
+        const data = await res.json();
+        setConverted(data.rates[toCurrency]);
+        setIsLoading(false);
       }
 
-      fetchCurrency();
+      if (fromCurrency === toCurrency) return setConverted(amount);
+      convert();
     },
-    [fromCurrency, toCurrency, query]
+    [amount, fromCurrency, toCurrency]
   );
-
-  const { amount: amount, rates: rates } = currency;
-
-  useEffect(
-    function () {
-      function handleConverter() {
-        if (fromCurrency !== toCurrency) {
-          setOutput(
-            (
-              (Number(query) / Number(amount)) *
-              Number(rates[toCurrency])
-            ).toFixed(2)
-          );
-        }
-      }
-
-      handleConverter();
-    },
-    [currency]
-  );
-
-  function handleInput(e) {
-    setQuery(e.target.value);
-  }
-
-  function handleFromCurrency(e) {
-    setFromCurrency(e.target.value);
-  }
-
-  function handleToCurrency(e) {
-    setToCurrency(e.target.value);
-  }
 
   return (
     <div>
-      <input type="text" value={query} onChange={handleInput} />
-      <select onChange={handleFromCurrency}>
+      <input
+        type="text"
+        value={amount}
+        onChange={(e) => setAmount(Number(e.target.value))}
+        disabled={isLoading}
+      />
+      <select
+        value={fromCurrency}
+        onChange={(e) => setFromCurrency(e.target.value)}
+        disabled={isLoading}
+      >
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <select onChange={handleToCurrency}>
+      <select
+        value={toCurrency}
+        onChange={(e) => setToCurrency(e.target.value)}
+        disabled={isLoading}
+      >
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <p>{output}</p>
+      <p>
+        {converted} {toCurrency}
+      </p>
     </div>
   );
 }
